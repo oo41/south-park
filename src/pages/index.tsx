@@ -16,34 +16,49 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <section className={styles.SouthHeader}>
-          <h1>South Park</h1>
-
-          <p className={styles.Description}>
-            <h3>
-              A political satire surrouding the lives of 4 schoolchildren of
-              South Park, Colorado.
-            </h3>
-          </p>
-        </section>
-        <section className={styles.Images}>
-          {/* <div
-            className={styles.Image}
+        <article>
+          <div
+            className={styles.image}
             style={{
               backgroundImage:
-                "url('https://www.hollywoodreporter.com/wp-content/uploads/2021/10/south-park-4.jpg')",
+                'url("https://www.hollywoodreporter.com/wp-content/uploads/2021/10/south-park-4.jpg")',
             }}
-          /> */}
-          <AspectRatio.Root ratio={16 / 9}>
-            <img
-              src="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/south-park-4.jpg"
-              alt="Stan, Kyle, Cartman and Kenny"
-              title="Stan, Kyle, Cartman and Kenny"
-              height="300px"
-              style={{ position: "absolute", right: "0", top: "20%" }}
-            ></img>
-          </AspectRatio.Root>
-        </section>
+          ></div>
+          <div className={styles.description}>
+            <p>
+              <a href="https://www.imdb.com/title/tt0121955/" target="_blank">
+                South Park
+              </a>{" "}
+              is an american satire covering the flaws in american politics.
+            </p>
+          </div>
+          <div className={styles.title}>
+            <h2 className={styles.GradSKCK}>South Park</h2>
+          </div>
+          <div className={styles.nav}>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="m14 18l-6-6l6-6l1.4 1.4l-4.6 4.6l4.6 4.6L14 18Z"
+                />
+              </svg>
+            </div>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <g transform="translate(24 0) scale(-1 1)">
+                  <path
+                    fill="currentColor"
+                    d="m14 18l-6-6l6-6l1.4 1.4l-4.6 4.6l4.6 4.6L14 18Z"
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </article>
+        <article></article>
+        <article></article>
+        <article></article>
       </main>
     </>
   );
