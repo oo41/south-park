@@ -1,0 +1,19 @@
+:root {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+  background-color: #101010;
+  color: #e0e0e0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+*::selection {
+  background-color: #ffffff50;
+}
