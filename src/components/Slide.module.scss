@@ -1,0 +1,95 @@
+$border-colour: #6d6d6d60;
+.GradSKCK {
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    #394478,
+    #5161a2,
+    #54c522,
+    #d61e41
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Slide {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  height: 100%;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  transition: transform 1s;
+  > div {
+    height: 100%;
+    transition: background 0.1s;
+  }
+  > div:hover {
+    background-color: #ffffff05;
+  }
+  > .image {
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.7;
+  }
+  > .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  > .description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    a {
+      inset: 0;
+      color: #ca6060;
+    }
+  }
+  > .nav {
+    display: flex;
+    > div {
+      cursor: pointer;
+      display: flex;
+      width: 100%;
+
+      border-right: 1px solid $border-colour;
+      align-items: center;
+      justify-content: center;
+      transition: background 200ms;
+      font-size: 3rem;
+      svg {
+        height: 12%;
+        transition: transform 200ms;
+      }
+    }
+    > div:hover {
+      background-color: #ffffff10;
+    }
+    > :nth-child(1):hover {
+      svg {
+        transform: translateX(-30%);
+      }
+    }
+    > :nth-child(2):hover {
+      svg {
+        transform: translateX(30%);
+      }
+    }
+  }
+  > .description,
+  > .nav {
+    border-left: 1px solid $border-colour;
+  }
+  > .title,
+  .nav {
+    border-top: 1px solid $border-colour;
+  }
+}
