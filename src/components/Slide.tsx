@@ -1,12 +1,19 @@
 import { ReactNode, useEffect, useState } from "react";
 import styles from "./Slide.module.scss";
 
+type cite = {
+  text: string;
+  link: string;
+};
+
 type Props = {
   navigate: Function;
   children: ReactNode;
   title: string;
   index: number;
   active: boolean;
+  cites: cite[];
+  style?: object;
 };
 
 export default function Slide({
@@ -15,6 +22,8 @@ export default function Slide({
   title,
   index,
   active,
+  cites,
+  style,
 }: Props) {
   return (
     <article
@@ -22,18 +31,26 @@ export default function Slide({
       data-index={index}
       data-status={active ? "active" : "before"}
     >
-      <div
-        className={styles.image}
-        style={{
-          backgroundImage:
-            'url("https://www.hollywoodreporter.com/wp-content/uploads/2021/10/south-park-4.jpg")',
-        }}
-      ></div>
-      <div className={styles.description}>{children}</div>
+      <div className={styles.description} style={style}>
+        {children}
+      </div>
+      <div className={styles.citations}>
+        <h2>Citations</h2>
+        <ol>
+          {cites.map((e, idx) => (
+            <>
+              <li key={Math.random()}>
+                <a href={e.link} target="_blank">
+                  {e.text}
+                </a>
+              </li>
+              <br key={Math.random()} />
+            </>
+          ))}
+        </ol>
+      </div>
       <div className={styles.title}>
-        <h2 className={styles.GradSKCK}>
-          {title}: {index}
-        </h2>
+        <h2 className={styles.GradSKCK}>{title}</h2>
       </div>
       <div className={styles.nav}>
         <div

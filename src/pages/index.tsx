@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "~/styles/Home.module.scss";
 import { createRef, useState } from "react";
 import Slide from "~/components/Slide";
+import Image from "next/image";
+import muhammed from "../assets/south_park_200_b.jpg";
 
 type NavEvent = {
   element: HTMLDivElement;
@@ -43,6 +45,29 @@ export default function Home() {
       }
     }
   }
+  function navigateEnd(direction: string, element: any) {
+    // element.setAttribute("data-status", "after");
+    const activeIndex = parseInt(
+      document
+        .querySelector("[data-status='active']")
+        ?.getAttribute("data-index") || "0"
+    );
+    switch (direction) {
+      case "left": {
+        if (activeIndex === 0) return;
+        console.log(
+          document
+            .querySelector(`[data-index='${activeIndex - 1}'`)
+            ?.setAttribute("data-status", "active")
+        );
+        element.setAttribute("data-status", "before");
+        break;
+      }
+      case "right": {
+        break;
+      }
+    }
+  }
   return (
     <>
       <Head>
@@ -56,28 +81,303 @@ export default function Home() {
           index={0}
           active={true}
           navigate={navigate}
-          title="South Park: Intro"
+          title="Table of Contents"
+          cites={[]}
         >
-          <p>
-            <a href="https://www.imdb.com/title/tt0121955/" target="_blank">
-              South Park
-            </a>{" "}
-            is an american satire covering the flaws in american society and
-            politics.
-          </p>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              flexDirection: "column",
+              width: "100%",
+            }}
+          >
+            <div>
+              <h1 style={{ fontSize: "4rem" }}>Contents</h1>
+              <ul style={{ fontSize: "1.5rem" }}>
+                <li>Introduction</li>
+                <li>History</li>
+                <li>Controversies</li>
+                <li>Citations</li>
+              </ul>
+            </div>
+          </div>
         </Slide>
         <Slide
           index={1}
           active={false}
           navigate={navigate}
-          title="South Park: Intro"
+          title="Introduction"
+          cites={[
+            {
+              text: `"Season 23 as a whole garnered around 113 million views across digital and social media platforms. " - CinemaBlend`,
+              link: "https://www.cinemablend.com/television/2487163/south-park-fans-watched-the-show-for-an-insane-number-of-hours-in-2019",
+            },
+            {
+              text: "en.wikipedia.org/wiki/South_Park_controversies",
+              link: "https://en.wikipedia.org/wiki/South_Park_controversies",
+            },
+          ]}
         >
           <p>
             <a href="https://www.imdb.com/title/tt0121955/" target="_blank">
               South Park
             </a>{" "}
-            follows the misadventures of four school children in a town called
-            South Park located in Colorado.
+            is an animated american sitcom that shows the flaws in american
+            society and politics in a comedic fashion. It was created by two
+            friends, Trey Parker and Matt Stone.
+          </p>
+
+          <p>
+            <img
+              style={{
+                transform: "rotate(1deg)",
+              }}
+              src="https://www.hollywoodreporter.com/wp-content/uploads/2021/10/south-park-4.jpg"
+              title="Courtesy of Hollywood Reporter"
+              height="100px"
+            />
+            <br />
+            It&apos;s a show that has garnered the attention of onlookers from
+            around the world.<sup>1</sup>
+            <br />
+            <br />
+            Presenting itself as an animated cartoon meant for children, it
+            offers a stark commentary on society, technology and the future.
+            <br />
+            <br />
+          </p>
+          <p>
+            Covering social justice, religion, politics and stereotypes, South
+            Park has been subject to a lot of critisism from both sides of the
+            political spectrum.
+            <sup>2</sup>
+          </p>
+          <p>
+            Given its raunchy humor and art, South Park is a show that has
+            pushed the limits for what can/should be shown on TV.
+          </p>
+          <p>
+            Despite the countless attempted boycotts of the show, South Park
+            stands tall, with the creators having just signed a USD$900B
+            contract with Paramount+.
+          </p>
+        </Slide>
+        <Slide
+          index={2}
+          active={false}
+          navigate={navigate}
+          cites={[
+            {
+              text: `"The Spirit of Christmas: Jesus vs. Frosty." It's really the first "South Park" episode" - CNN Magazine`,
+              link: "https://money.cnn.com/magazines/fortune/fortune_archive/2006/10/30/8391792/index.htm",
+            },
+            {
+              text: `"Fox Refused to Take 'South Park' in 1997 Because of One Character" - GlamourFame`,
+              link: "https://glamourfame.com/fox-refused-south-park-1997-because-one-character",
+            },
+          ]}
+          title="History"
+        >
+          <p>
+            South Park was first &quot;produced&quot; in 1992, created while
+            Matt and Trey were attending the University of Colorado.
+          </p>
+          <p>
+            The first &quot;episode&quot; of South Park was a short entitled{" "}
+            <a
+              href="https://www.youtube.com/watch?v=sFCwSoAEBJk"
+              target={"_blank"}
+            >
+              &quot;Jesus vs. Frosty&quot;
+            </a>
+            . The episode was created using low budget apparatus, consisting of
+            cardboard cutouts and a stop motion camera.
+          </p>
+          <p>
+            The video was shared person to person via email, and three years
+            later, a Fox executive by the name of Brian Garden would come across
+            the video, commisioning the original creators to produce another
+            episode of South Park for Brian to share with friends and
+            colleagues.<sup>1</sup>
+            <a
+              href="https://www.youtube.com/watch?v=sFCwSoAEBJk"
+              target={"_blank"}
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/d/d1/Jesus_vs._Frosty.png?20171015231156"
+                style={{ height: "200px" }}
+              />
+            </a>
+            <br />
+            <br />
+            Little did anyone know, this second animation would become one of
+            the first viral videos on the Internet.
+            <br />
+            <br />
+            After the boom in popularity of South Park, Fox decided to meet with
+            the creators of South Park in which Matt and Trey got in a
+            disagreement with Fox, eventually opting to host South Park on a
+            different platform.<sup>2</sup>
+          </p>
+          <p>
+            Eventually, South Park settled with airing on Comedy Central, which
+            is where it&apos;s aired today.
+          </p>
+        </Slide>
+        <Slide
+          index={3}
+          active={false}
+          navigate={navigate}
+          cites={[
+            {
+              link: "http://news.bbc.co.uk/1/hi/entertainment/8636455.stm",
+              text: `"We have to warn Matt and Trey that what they are doing is stupid and they will probably wind up like Theo Van Gogh for airing this show," warned the posting, written in the name of Abu Talhah Al-Amrikee.`,
+            },
+            {
+              link: "https://www.theguardian.com/world/2004/nov/07/terrorism.religion",
+              text: `"The murder that shattered Holland's liberal dream" - The Guardian`,
+            },
+          ]}
+          title="Controversies"
+        >
+          <h2>Super Best Friends</h2>
+          <p>
+            Perhaps one of the most infamous South Park controversies surrounds
+            Episode 3 of Season 5, &quot;Super Best Friends&quot;. (2001)
+          </p>
+          <p>
+            Super Best Friends is infamous for a myriad of reasons, the most
+            damning of which being a visual depiction of Muhammad. Though the
+            depiction of Muhammad is not directly prohibited in the Quran, many
+            Muslims strongly oppose any visual representation of him.
+          </p>
+          <p>
+            <img src={muhammed.src} alt="Super Best Friends" />
+            <br />
+            The constant depiction of Muhammad in later episodes led to the
+            group &quot;Revolution Muslim&quot; threatening that Matt Stone and
+            Trey Parker would &quot;wind up probably like Theo Van Gogh&quot;.
+            <sup>1</sup>
+            <br />
+            <br />
+            Theo Van Gogh was a harsh critic of Islam who was shot and stabbed
+            in 2004.<sup>2</sup>
+          </p>
+          <p>
+            Following these warnings, Comedy Central, HBO, and numerous other TV
+            platforms have pulled &quot;Super Best Friends&quot;, &quot;Cartoon
+            Wars&quot; and multiple other pertaining episodes from their TV
+            Networks.
+          </p>
+        </Slide>
+        <Slide
+          title="Stereotypes 1/2"
+          cites={[
+            {
+              text: "Child Labor Force | South Park Archives | Fandom",
+              link: "https://southpark.fandom.com/wiki/Child_Labor_Force",
+            },
+          ]}
+          index={4}
+          active={false}
+          navigate={navigate}
+        >
+          <h2>The use of stereotypes in South Park</h2>
+          <p>
+            South Park is very abundant with stereotyping. And on a surface
+            level, many could take that as racism, or sexism, or xenophobia. But
+            that could not be further from the truth.
+          </p>
+          <p>
+            <img
+              src="https://static.wikia.nocookie.net/southpark/images/c/cd/City-wok-guy.png/revision/latest/scale-to-width-down/238?cb=20151118032652"
+              style={{ boxShadow: "none", outline: "none" }}
+            />
+            Rather than using stereotypes harmfully (e.g, women drive poorly,
+            asians eat dogs), South Park uses the absurd nature of these
+            stereotypes in order to ridicule them and make them look silly.
+            <br />
+            <br />
+            One of the prime examples of a stereotype in South Park is Tuong Lu
+            Kim. Lu Kim owns a restaurant called &quot;City Wok&quot;, but his
+            thick chinese accent prevents him from pronouncing the name
+            correctly, instead pronouncing it &quot;Shitty Wok&quot;.
+          </p>
+          <p>
+            In the episode &quot;The City Part of Town&quot;, Lu Kim hires
+            underage children to work for his restruant, due to the small amount
+            of traffic the restaurant was generating. In an effort to motivate
+            the kids, Lu Kim comes up with a chant &quot;Let&apos;s go, child
+            labour force, let&apos;s go!&quot;.<sup>1</sup>
+          </p>
+        </Slide>
+        <Slide
+          title="Stereotypes 2/2"
+          cites={[]}
+          index={5}
+          active={false}
+          navigate={navigate}
+        >
+          <h2>South Park Stereotypes - Tolkien</h2>
+          <div>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Token_Black2.webp/160px-Token_Black2.webp.png"
+              alt="Chef from South Park"
+              style={{ outline: "none", boxShadow: "none" }}
+            />
+            <br />
+            <p>
+              Another great example of a stereotyped character in South Park is
+              Tolkien Black (Formerly Token Black).
+            </p>
+            <br />
+            <p>
+              An obvious stereotype related to this character is his name. The
+              original name &quot;Token&quot; meant how some entertainment
+              production would purposefully include African-American characters
+              in order to be perceived as &quot;diverse&quot; or &quot;not
+              racist&quot;.
+            </p>
+          </div>
+          <p>
+            Tolkien isn&apos;t necessarily stereotyped in how he acts, but
+            rather is stereotyped by a fellow classmate, Eric Cartman. For
+            example, Eric constantly assigns Tolkien things based on his race.
+          </p>
+          <p>
+            An example of this could be when Eric automatically thinks Tolkien
+            has a grudge against him because Eric said negative things about
+            Black Panther, despite Tolkien not even having watched the movie.
+          </p>
+        </Slide>
+        <Slide
+          index={6}
+          active={false}
+          navigate={navigateEnd}
+          cites={[]}
+          title="Conclusion"
+        >
+          <h2>25 years of South Park.</h2>
+          <p>
+            South Park has been running since August 13, 1997, meaning it&apos;s
+            allowed to drink in most parts of the world.
+          </p>
+          <p>
+            In that time, South Park has managed to stay on top as one of the
+            most popular adult comedy TV shows out there, majorly influencing
+            pop culture, the internet and everything in between.
+          </p>
+          <div>
+            <img src="https://media.vanityfair.com/photos/58238ee1111bb9951d299c07/16:9/w_1200,h_630,c_limit/south-park-episode.jpg" />
+            <img src="https://m.media-amazon.com/images/M/MV5BYzAxMzNmZjEtMGVlNi00OWI4LTgwNmItODZmOTI0N2EwMmQxXkEyXkFqcGdeQXVyNjgyODE4NTE@._V1_.jpg" />
+          </div>
+          <p>
+            As a testament to how cutting-edge South Park can be, one day after
+            the 2008 United States election, South Park released an episode
+            about it, containing quotes from the Obama&apos;s actual
+            presidential speech.
           </p>
         </Slide>
       </main>

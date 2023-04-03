@@ -19,38 +19,86 @@ $border-colour: #6d6d6d60;
   top: 0;
   display: grid;
   height: 100%;
+  width: 100%;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 2fr 1fr;
-  transition: transform 1s;
+  grid-template-rows: 3fr 1fr;
+  transition: transform 0.7s;
+
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 9%,
+    transparent 9%
+  );
+  background-position: 0% 0%;
+  background-size: 2rem 2rem;
   > div {
     height: 100%;
     transition: background 0.1s;
   }
-  > div:hover {
-    background-color: #ffffff05;
+  > div.description:hover,
+  > div.citations:hover,
+  > div.title:hover {
+    background-color: #ef476f10;
   }
-  > .image {
-    background-size: cover;
-    background-position: center center;
-    opacity: 0.7;
+  > .citations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 3rem;
+    ol {
+      padding: 1rem;
+      font-size: 0.8rem;
+      a {
+        inset: 0;
+        color: #ca6060;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
   }
   > .title {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 700;
   }
   > .description {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 1rem;
+    align-items: flex-start;
+    padding: 3rem;
     font-family: "Inter", sans-serif;
     font-weight: 400;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    // overflow-y: scroll;
+    sup {
+      color: #ca6060;
+    }
+    img {
+      outline: solid 2px #fff;
+      height: 200px;
+      float: left;
+      margin: 1rem;
+      border-radius: 4px;
+      box-shadow: 10px 10px #ef476f;
+      transition: box-shadow 0.2s;
+    }
+    img:hover {
+      box-shadow: 0 0 #ef476f;
+    }
     a {
       inset: 0;
       color: #ca6060;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #dac96b;
     }
   }
   > .nav {
@@ -71,7 +119,7 @@ $border-colour: #6d6d6d60;
       }
     }
     > div:hover {
-      background-color: #ffffff10;
+      background-color: #ef476f10;
     }
     > :nth-child(1):hover {
       svg {
@@ -84,7 +132,7 @@ $border-colour: #6d6d6d60;
       }
     }
   }
-  > .description,
+  > .citations,
   > .nav {
     border-left: 1px solid $border-colour;
   }
